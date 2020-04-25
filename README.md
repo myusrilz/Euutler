@@ -1,38 +1,40 @@
 # Euutler
-Dalam analisis numerik, Richardson Extrapolation adalah metode percepatan urutan, yang digunakan untuk meningkatkan laju konvergensi suatu urutan.
+> Dalam analisis numerik, Richardson Extrapolation adalah metode percepatan urutan, yang digunakan untuk meningkatkan laju konvergensi suatu urutan.
+>
+> Richardson Extrapolation termasuk integrasi Romberg, yang menerapkan ekstrapolasi Richardson pada aturan trapesium, dan algoritma Bulirsch-Stoer untuk menyelesaikan persamaan diferensial biasa.
 
-Richardson Extrapolation termasuk integrasi Romberg, yang menerapkan ekstrapolasi Richardson pada aturan trapesium, dan algoritma Bulirsch-Stoer untuk menyelesaikan persamaan diferensial biasa.
+### **Teori**
 
-Teori
 Dalam rumus :
 
-( f (x + h) - f (x - h) ) / (2 h)
+***( f (x + h) - f (x - h) ) / (2 h)\***
 
-untuk nilai h yang sangat kecil, dua fungsi evaluasi f (x + h) dan f (x - h) akan menjadi kira-kira sama, dan oleh karena itu pembatalan subtraktif akan terjadi. Oleh karena itu, tidak disarankan untuk menggunakan nilai h yang semakin kecil.
+untuk nilai h yang sangat kecil, dua fungsi evaluasi *f (x + h)* dan *f (x - h)* akan menjadi kira-kira sama, dan oleh karena itu pembatalan subtraktif akan terjadi. Oleh karena itu, tidak disarankan untuk menggunakan nilai h yang semakin kecil.
 
-Kita dapat mencoba untuk memperkirakan nilai tepat e dengan perkiraan a(h). Dalam hal ini, e adalah turunan dari f (1) (x) dan perkiraannya adalah ( h ) = (f (x + h) - f (x - h)) / (2 h). Misalkan sekarang bahwa kesalahan aproksimasi didefinisikan oleh serangkaian bentuk Taylor :
+Kita dapat mencoba untuk memperkirakan nilai tepat *e* dengan perkiraan *a(h)*. Dalam hal ini, *e* adalah turunan dari *f (1) (x)* dan perkiraannya adalah *( h ) = (f (x + h) - f (x - h)) / (2 h)*. Misalkan sekarang bahwa kesalahan aproksimasi didefinisikan oleh serangkaian bentuk Taylor :
 
-e = a(h) + K hn + o(hn)
+*e = a(h) + K hn + o(hn)*
 
-Apabila menggunakan h / 2 :
+Apabila menggunakan *h / 2* :
 
-e = a(h/2) + K (h/2)n + o((h/2)n)
-= a(h/2) + K/2n hn + o(hn)
+*e = a(h/2) + K (h/2)n + o((h/2)n)*
+*= a(h/2) + K/2n hn + o(hn)*
 
-Mengalikan kedua ekspresi ini dengan 2n dan mengurangi hasil persamaan pertama
+Mengalikan kedua ekspresi ini dengan 2*n* dan mengurangi hasil persamaan pertama
 
-2ne − e = 2na(h/2) − a(h) + K/2n hn − K hn + o(hn)
+*2ne − e = 2na(h/2) − a(h) + K/2n hn − K hn + o(hn)*
 
 Perhatikan bahwa istilah hn dibatalkan dan kita dibiarkan dengan
 
-(2n − 1)e = 2na(h/2) − a(h) + o(hn)
+*(2n − 1)e = 2na(h/2) − a(h) + o(hn)*
 
 Jika kita melihat seri Taylor lengkap untuk rumus perbedaan-terpusat yang terpusat, kita perhatikan bahwa istilah kesalahannya dalam bentuk Knhn. Dapat kita tulis dengan :
 
-K1 = −1/6 f(3)(x)h2, etc.
+*K1 = −1/6 f(3)(x)h2, etc.*
 
-Contoh Program
+### **Contoh Program**
 
+```
 from math import *
 def zeros(n,m):
     Z=[]
@@ -61,8 +63,11 @@ print("=======================================================================")
 print('%04.20f'%Richardson_dif(lambda x: -0.1*x**4-0.15*x**3-0.5*x**2-0.25*x+1.2 ,0.5))
 print("=======================================================================")
 print('diff(2**cos(pi+sin(x)) dengan x = pi/2 adalah = %04.20f'%Richardson_dif(lambda x: 2**cos(pi+sin(x)),pi/3))
-Hasil Running¶
+```
 
+### **Hasil Running**
+
+```
 >>>>>>>>>>>>>>>>>>>>>>> DIFERENSIASI NUMERIK DARI <<<<<<<<<<<<<<<<<<<<<
 =======================================================================
 f = -0.1*x**4-0.15*x**3-0.5*x**2-0.25*x+1.2 dengan x = 0.5
@@ -71,3 +76,4 @@ f = -0.1*x**4-0.15*x**3-0.5*x**2-0.25*x+1.2 dengan x = 0.5
 =======================================================================
 diff(2**cos(pi+sin(x)) dengan x = pi/2 adalah = 0.16849558398154249050
 >>> 
+```
