@@ -3,7 +3,7 @@ Dalam analisis numerik, Richardson Extrapolation adalah metode percepatan urutan
 
 Richardson Extrapolation termasuk integrasi Romberg, yang menerapkan ekstrapolasi Richardson pada aturan trapesium, dan algoritma Bulirsch-Stoer untuk menyelesaikan persamaan diferensial biasa.
 
-Teori¶
+Teori
 Dalam rumus :
 
 ( f (x + h) - f (x - h) ) / (2 h)
@@ -31,7 +31,7 @@ Jika kita melihat seri Taylor lengkap untuk rumus perbedaan-terpusat yang terpus
 
 K1 = −1/6 f(3)(x)h2, etc.
 
-Contoh Program¶
+Contoh Program
 
 from math import *
 def zeros(n,m):
